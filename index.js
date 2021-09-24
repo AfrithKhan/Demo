@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
 app.get('/', (req, res)=> { HEAD
-res.send('Hello Hi _MY_ENV_VAR');
+res.send('Hello Hi ');
 
 });
 
