@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, Afrith!').end();
+  res.status(200).send('Hello, Afrith Khan!').end();
 });
 
 // Start the server
