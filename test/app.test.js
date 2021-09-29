@@ -9,7 +9,7 @@ describe('gae_node_request_example', () => {
     });
 
     it('should get Hello World', done => {
-      request(app).get('/').expect('Hello, Afrith!', done);
+      request(app).get('/').expect('Hello, Afrith khan!', done);
     });
   });
 });
