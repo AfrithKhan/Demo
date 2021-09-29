@@ -1,34 +1,20 @@
-const app = require('express')();
-const bodyParser = require('body-parser');
+'use strict';
 
-app.use(bodyParser.json())
+// [START gae_node_request_example]
+const express = require('express');
 
-app.get('/', (req, res)=> { 
-res.send('Hello Hi ');
+const app = express();
 
+app.get('/', (req, res) => {
+  res.status(200).send('Hello, world!').end();
 });
 
-app.post('/getIndexes', (req, res)=> {
-    var indexingQuery = `ALTER TABLE ${req.body.tablename} `;
-    const columns  = req.body.columns;
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+// [END gae_node_request_example]
 
-    columns.forEach((element, index) => {
-        if(index === 0) {
-            indexingQuery = indexingQuery + ` ADD INDEX \`idx_${element}\`(\`${element}\`)`;
-        } else {
-            indexingQuery = indexingQuery + `, ADD INDEX \`idx_${element}\`(\`${element}\`)`;
-        }
-    });
-
-    const output = {
-        tableName: req.tableName,
-        indexingQuery: indexingQuery + ';'
-    }
-
-    res.send(output)
-    
-
-
-})
-
-app.listen(3000, ()=> console.log('Server is up and running'));
+module.exports = app;
